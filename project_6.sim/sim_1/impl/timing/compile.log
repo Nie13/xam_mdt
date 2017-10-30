@@ -1,0 +1,5 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/l/Desktop/6463ADVHDes/code/project_6/project_6.sim/sim_1/impl/timing/find_ndnddn_tb_time_impl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module find_ndnddn
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/l/Desktop/6463ADVHDes/code/project_6/project_6.srcs/sim_1/new/find_ndnddn_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity find_ndnddn_tb
