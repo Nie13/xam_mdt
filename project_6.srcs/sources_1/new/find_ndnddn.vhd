@@ -15,7 +15,7 @@
 -- Revision:
 -- Revision 0.01 - File Created
 -- Additional Comments:
--- 
+-- post timing start from 0 and behavior start from 1
 ----------------------------------------------------------------------------------
 
 
@@ -41,23 +41,28 @@ entity find_ndnddn is
         DATA: in std_logic;
         VALID: out std_logic;
         clk: in std_logic ;
-        lot: out std_logic_vector ( 4 downto 0));
+        lot: out std_logic_vector ( 4 downto 0);
+        bol: out std_logic_vector (5 downto 0);
+        cntt: out std_logic_vector ( 2 downto 0));
 end find_ndnddn;
 
 architecture Behavioral of find_ndnddn is
 signal cnt_5 : std_logic_vector (2 downto 0) := "000";
 signal letter: std_logic_vector (4 downto 0) := "11110";
 signal bool_6: std_logic_vector(5 downto 0) := "000000";
-
+signal valval: std_logic;
 
 begin
 
 lot <= letter;
+bol <= bool_6;
+cntt <= cnt_5;
+VALID <= valval;
 
 CLOCK: PROCESS(clk, RESET)
     BEGIN
         if (RESET = '1') then
-            VALID <= '0';
+            valval <= '0';
         elsif (clk 'EVENT and clk = '1') then
             if (cnt_5 = "100")then
                 cnt_5 <= "000";
@@ -89,30 +94,32 @@ CLOCK: PROCESS(clk, RESET)
                 
             elsif (cnt_5 = "000") then
                 cnt_5 <= "001";
-                if (bool_6 = "000000" and letter (4 downto 0) = "01101" ) then
-                                    bool_6 <= "000001";
-                                    letter <= letter( 3 downto 0) & DATA;
-                                elsif (bool_6 = "000001" and  letter (4 downto 0) = "00011" ) then
-                                    bool_6 <= "000011";
-                                    letter <= letter( 3 downto 0) & DATA;
-                                 elsif (bool_6 = "000011" and letter (4 downto 0) = "01101" ) then
-                                    bool_6 <= "000111";
-                                    letter <= letter( 3 downto 0) & DATA;
-                                 elsif (bool_6 = "000111" and letter (4 downto 0) = "00011" ) then
-                                    bool_6 <= "001111";
-                                    letter <= letter( 3 downto 0) & DATA;
-                                 elsif (bool_6 = "001111" and letter (4 downto 0) = "00011" ) then
-                                    bool_6 <= "011111";
-                                    letter <= letter( 3 downto 0) & DATA;
-                                  elsif (bool_6 = "011111" and letter (4 downto 0) = "01101" ) then
-                                    bool_6 <= "000001";
-                                    VALID <= '1';
-                                    letter <= letter( 3 downto 0) & DATA;
-                                  else
-                                    bool_6 <= "000000";
-                                    letter <= letter( 3 downto 0) & DATA;
+                letter <= letter(3 downto 0) & DATA;
+--                VALID <= '0';
+--                if (bool_6 = "000000" and letter (4 downto 0) = "01101" ) then
+--                                    bool_6 <= "000001";
+--                                    letter <= letter( 3 downto 0) & DATA;
+--                                elsif (bool_6 = "000001" and  letter (4 downto 0) = "00011" ) then
+--                                    bool_6 <= "000011";
+--                                    letter <= letter( 3 downto 0) & DATA;
+--                                 elsif (bool_6 = "000011" and letter (4 downto 0) = "01101" ) then
+--                                    bool_6 <= "000111";
+--                                    letter <= letter( 3 downto 0) & DATA;
+--                                 elsif (bool_6 = "000111" and letter (4 downto 0) = "00011" ) then
+--                                    bool_6 <= "001111";
+--                                    letter <= letter( 3 downto 0) & DATA;
+--                                 elsif (bool_6 = "001111" and letter (4 downto 0) = "00011" ) then
+--                                    bool_6 <= "011111";
+--                                    letter <= letter( 3 downto 0) & DATA;
+--                                  elsif (bool_6 = "011111" and letter (4 downto 0) = "01101" ) then
+--                                    bool_6 <= "000001";
+--                                    VALID <= '1';
+--                                    letter <= letter( 3 downto 0) & DATA;
+--                                  else
+--                                    bool_6 <= "000000";
+--                                    letter <= letter( 3 downto 0) & DATA;
                                                
-                                end if;
+--                                end if;
 --                if (bool_6 = "000000" and letter (4 downto 0) = "01101" ) then
 --                    bool_6 <= "000001";
 --                    letter <= "1111" & DATA;
@@ -142,11 +149,38 @@ CLOCK: PROCESS(clk, RESET)
             else
                 cnt_5 <= cnt_5 + "001";
                 letter (4 downto 0) <= letter (3 downto 0) & DATA;
-                VALID <= '0';
+--                VALID <= '0';
                 
             end if;         
-            
         end if;
+END PROCESS;
+
+COMPUTE: PROCESS (cnt_5)
+BEGIN
+if (cnt_5 = "000") then
+if (letter (4 downto 0) = "01101") then
+    if(bool_6 = "000000" ) then
+        bool_6 <= "000001";
+    elsif (bool_6 = "000011") then
+        bool_6 <= "000111";
+    elsif (bool_6 = "011111") then
+        valval <= '1';
+        bool_6 <= "000001";    
+    end if;
+elsif (letter = "00011" ) then
+    if(bool_6 = "000001" ) then
+        bool_6 <= "000011";
+        valval <= '0';
+    elsif (bool_6 = "000111") then
+        bool_6 <= "001111";
+    elsif (bool_6 = "001111") then
+        bool_6 <= "011111";        
+    end if;
+else
+    bool_6 <= "000000";
+    valval <= '0';
+end if;
+end if;
 END PROCESS;
 
 end Behavioral;

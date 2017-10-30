@@ -14,30 +14,32 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t-cpg236'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t-cpg236'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 10488 
+INFO: Helper process launched with PID 5988 
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 307.461 ; gain = 76.969
+Starting Synthesize : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 307.438 ; gain = 77.102
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'find_ndnddn' [C:/Users/l/Desktop/6463ADVHDes/code/project_6/project_6.srcs/sources_1/new/find_ndnddn.vhd:47]
-INFO: [Synth 8-256] done synthesizing module 'find_ndnddn' (1#1) [C:/Users/l/Desktop/6463ADVHDes/code/project_6/project_6.srcs/sources_1/new/find_ndnddn.vhd:47]
+INFO: [Synth 8-638] synthesizing module 'find_ndnddn' [C:/Users/l/Desktop/6463ADVHDes/code/project_6/project_6.srcs/sources_1/new/find_ndnddn.vhd:49]
+WARNING: [Synth 8-614] signal 'letter' is read in the process but is not in the sensitivity list [C:/Users/l/Desktop/6463ADVHDes/code/project_6/project_6.srcs/sources_1/new/find_ndnddn.vhd:159]
+WARNING: [Synth 8-614] signal 'bool_6' is read in the process but is not in the sensitivity list [C:/Users/l/Desktop/6463ADVHDes/code/project_6/project_6.srcs/sources_1/new/find_ndnddn.vhd:159]
+INFO: [Synth 8-256] done synthesizing module 'find_ndnddn' (1#1) [C:/Users/l/Desktop/6463ADVHDes/code/project_6/project_6.srcs/sources_1/new/find_ndnddn.vhd:49]
 ---------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 346.539 ; gain = 116.047
+Finished Synthesize : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 346.766 ; gain = 116.430
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 346.539 ; gain = 116.047
+Finished Constraint Validation : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 346.766 ; gain = 116.430
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 346.539 ; gain = 116.047
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 346.766 ; gain = 116.430
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
-INFO: [Synth 8-5544] ROM "cnt_5" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "cnt_5" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+WARNING: [Synth 8-327] inferring latch for variable 'valval_reg' [C:/Users/l/Desktop/6463ADVHDes/code/project_6/project_6.srcs/sources_1/new/find_ndnddn.vhd:60]
+WARNING: [Synth 8-327] inferring latch for variable 'bool_6_reg' [C:/Users/l/Desktop/6463ADVHDes/code/project_6/project_6.srcs/sources_1/new/find_ndnddn.vhd:58]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 346.539 ; gain = 116.047
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 346.766 ; gain = 116.430
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -53,16 +55,13 @@ Detailed RTL Component Info :
 +---Adders : 
 	   2 Input      3 Bit       Adders := 1     
 +---Registers : 
-	                6 Bit    Registers := 1     
 	                5 Bit    Registers := 1     
 	                3 Bit    Registers := 1     
-	                1 Bit    Registers := 1     
 +---Muxes : 
-	   2 Input      6 Bit        Muxes := 6     
 	   5 Input      5 Bit        Muxes := 1     
-	   6 Input      5 Bit        Muxes := 1     
 	   4 Input      3 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 3     
+	   2 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 10    
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -75,16 +74,13 @@ Detailed RTL Component Info :
 +---Adders : 
 	   2 Input      3 Bit       Adders := 1     
 +---Registers : 
-	                6 Bit    Registers := 1     
 	                5 Bit    Registers := 1     
 	                3 Bit    Registers := 1     
-	                1 Bit    Registers := 1     
 +---Muxes : 
-	   2 Input      6 Bit        Muxes := 6     
 	   5 Input      5 Bit        Muxes := 1     
-	   6 Input      5 Bit        Muxes := 1     
 	   4 Input      3 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 3     
+	   2 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 10    
 ---------------------------------------------------------------------------------
 Finished RTL Hierarchical Component Statistics
 ---------------------------------------------------------------------------------
@@ -104,7 +100,7 @@ Start Cross Boundary and Area Optimization
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\bool_6_reg[5] )
 WARNING: [Synth 8-3332] Sequential element (bool_6_reg[5]) is unused and will be removed from module find_ndnddn.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 468.027 ; gain = 237.535
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 482.785 ; gain = 252.449
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -117,7 +113,7 @@ No constraint files found.
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 468.027 ; gain = 237.535
+Finished Timing Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 482.785 ; gain = 252.449
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -129,7 +125,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 469.652 ; gain = 239.160
+Finished Technology Mapping : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 483.848 ; gain = 253.512
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -153,7 +149,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 469.652 ; gain = 239.160
+Finished IO Insertion : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 483.848 ; gain = 253.512
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -166,7 +162,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 469.652 ; gain = 239.160
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 483.848 ; gain = 253.512
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -178,25 +174,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 469.652 ; gain = 239.160
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 483.848 ; gain = 253.512
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 469.652 ; gain = 239.160
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 483.848 ; gain = 253.512
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 469.652 ; gain = 239.160
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 483.848 ; gain = 253.512
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 469.652 ; gain = 239.160
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 483.848 ; gain = 253.512
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -214,40 +210,41 @@ Report Cell Usage:
 +------+-----+------+
 |1     |BUFG |     1|
 |2     |LUT1 |     1|
-|3     |LUT2 |     2|
-|4     |LUT3 |     5|
-|5     |LUT4 |     4|
-|6     |LUT5 |     5|
-|7     |LUT6 |    17|
-|8     |FDCE |     1|
-|9     |FDRE |    13|
+|3     |LUT2 |     1|
+|4     |LUT3 |     2|
+|5     |LUT4 |     2|
+|6     |LUT5 |    10|
+|7     |LUT6 |     5|
+|8     |FDRE |     8|
+|9     |LD   |     6|
 |10    |IBUF |     3|
-|11    |OBUF |     6|
+|11    |OBUF |    15|
 +------+-----+------+
 
 Report Instance Areas: 
 +------+---------+-------+------+
 |      |Instance |Module |Cells |
 +------+---------+-------+------+
-|1     |top      |       |    58|
+|1     |top      |       |    54|
 +------+---------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 469.652 ; gain = 239.160
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 483.848 ; gain = 253.512
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 469.652 ; gain = 239.160
-Synthesis Optimization Complete : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 469.652 ; gain = 239.160
+Synthesis finished with 0 errors, 0 critical warnings and 5 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 483.848 ; gain = 253.512
+Synthesis Optimization Complete : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 483.848 ; gain = 253.512
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 3 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 9 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
 INFO: [Project 1-111] Unisim Transformation Summary:
-No Unisim elements were transformed.
+  A total of 6 instances were transformed.
+  LD => LDCE: 6 instances
 
-13 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+11 Infos, 5 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:18 ; elapsed = 00:00:21 . Memory (MB): peak = 553.543 ; gain = 330.820
+synth_design: Time (s): cpu = 00:00:15 ; elapsed = 00:00:18 . Memory (MB): peak = 556.527 ; gain = 333.961
 INFO: [Common 17-1381] The checkpoint 'C:/Users/l/Desktop/6463ADVHDes/code/project_6/project_6.runs/synth_1/find_ndnddn.dcp' has been generated.
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.023 . Memory (MB): peak = 553.543 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Mon Oct 23 20:25:31 2017...
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.029 . Memory (MB): peak = 556.527 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Mon Oct 30 16:53:32 2017...

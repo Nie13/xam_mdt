@@ -1,7 +1,7 @@
 // Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2017.2 (win64) Build 1909853 Thu Jun 15 18:39:09 MDT 2017
-// Date        : Mon Oct 23 20:25:50 2017
+// Date        : Mon Oct 30 16:54:37 2017
 // Host        : l-THINK running 64-bit major release  (build 9200)
 // Command     : write_verilog -mode timesim -nolib -sdf_anno true -force -file
 //               C:/Users/l/Desktop/6463ADVHDes/code/project_6/project_6.sim/sim_1/synth/timing/find_ndnddn_tb_time_synth.v
@@ -19,60 +19,49 @@ module find_ndnddn
     DATA,
     VALID,
     clk,
-    lot);
+    lot,
+    bol,
+    cntt);
   input RESET;
   input DATA;
   output VALID;
   input clk;
   output [4:0]lot;
+  output [5:0]bol;
+  output [2:0]cntt;
 
   wire DATA;
   wire DATA_IBUF;
   wire RESET;
   wire RESET_IBUF;
   wire VALID;
-  wire VALID3_out;
   wire VALID_OBUF;
-  wire VALID_i_2_n_0;
-  wire VALID_i_3_n_0;
-  wire VALID_i_4_n_0;
+  wire [5:0]bol;
+  wire [4:0]bol_OBUF;
   wire [4:0]bool_6;
-  wire bool_60;
-  wire \bool_6[0]_i_1_n_0 ;
-  wire \bool_6[0]_i_3_n_0 ;
-  wire \bool_6[0]_i_4_n_0 ;
-  wire \bool_6[1]_i_1_n_0 ;
-  wire \bool_6[1]_i_2_n_0 ;
-  wire \bool_6[1]_i_3_n_0 ;
-  wire \bool_6[1]_i_4_n_0 ;
-  wire \bool_6[1]_i_5_n_0 ;
-  wire \bool_6[2]_i_1_n_0 ;
-  wire \bool_6[2]_i_2_n_0 ;
-  wire \bool_6[2]_i_3_n_0 ;
-  wire \bool_6[2]_i_4_n_0 ;
-  wire \bool_6[2]_i_5_n_0 ;
-  wire \bool_6[2]_i_6_n_0 ;
-  wire \bool_6[2]_i_7_n_0 ;
-  wire \bool_6[2]_i_8_n_0 ;
-  wire \bool_6[2]_i_9_n_0 ;
-  wire \bool_6[3]_i_1_n_0 ;
-  wire \bool_6[3]_i_2_n_0 ;
-  wire \bool_6[4]_i_1_n_0 ;
-  wire \bool_6[4]_i_2_n_0 ;
-  wire \bool_6[4]_i_3_n_0 ;
-  wire \bool_6[4]_i_4_n_0 ;
-  wire \bool_6[4]_i_5_n_0 ;
-  wire \bool_6[4]_i_6_n_0 ;
+  wire \bool_6_reg[1]_i_2_n_0 ;
+  wire \bool_6_reg[4]_i_2_n_0 ;
+  wire \bool_6_reg[4]_i_3_n_0 ;
+  wire \bool_6_reg[4]_i_4_n_0 ;
+  wire \bool_6_reg[4]_i_5_n_0 ;
   wire clk;
   wire clk_IBUF;
   wire clk_IBUF_BUFG;
-  wire [2:0]cnt_5;
   wire \cnt_5[0]_i_1_n_0 ;
   wire \cnt_5[1]_i_1_n_0 ;
   wire \cnt_5[2]_i_1_n_0 ;
+  wire [2:0]cntt;
+  wire [2:0]cntt_OBUF;
+  wire eqOp0_in;
+  wire eqOp2_in;
   wire \letter[4]_i_1_n_0 ;
   wire [4:0]lot;
   wire [4:0]lot_OBUF;
+  wire valval;
+  wire valval3_out;
+  wire valval6_out;
+  wire valval_reg_i_4_n_0;
+  wire valval_reg_i_5_n_0;
 
 initial begin
  $sdf_annotate("find_ndnddn_tb_time_synth.sdf",,,,"tool_control");
@@ -86,363 +75,196 @@ end
   OBUF VALID_OBUF_inst
        (.I(VALID_OBUF),
         .O(VALID));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFF8000)) 
-    VALID_i_1
-       (.I0(bool_6[4]),
-        .I1(bool_6[3]),
-        .I2(VALID_i_3_n_0),
-        .I3(VALID_i_4_n_0),
-        .I4(cnt_5[1]),
-        .I5(cnt_5[0]),
-        .O(VALID3_out));
-  LUT6 #(
-    .INIT(64'h0000000000008000)) 
-    VALID_i_2
-       (.I0(VALID_i_4_n_0),
-        .I1(VALID_i_3_n_0),
-        .I2(bool_6[4]),
-        .I3(bool_6[3]),
-        .I4(cnt_5[1]),
-        .I5(cnt_5[0]),
-        .O(VALID_i_2_n_0));
-  LUT3 #(
-    .INIT(8'h04)) 
-    VALID_i_3
-       (.I0(lot_OBUF[4]),
-        .I1(lot_OBUF[0]),
-        .I2(cnt_5[2]),
-        .O(VALID_i_3_n_0));
-  LUT6 #(
-    .INIT(64'h0800000000000000)) 
-    VALID_i_4
-       (.I0(lot_OBUF[3]),
-        .I1(lot_OBUF[2]),
-        .I2(lot_OBUF[1]),
-        .I3(bool_6[2]),
-        .I4(bool_6[0]),
-        .I5(bool_6[1]),
-        .O(VALID_i_4_n_0));
-  FDCE #(
-    .INIT(1'b0)) 
-    VALID_reg
-       (.C(clk_IBUF_BUFG),
-        .CE(VALID3_out),
-        .CLR(RESET_IBUF),
-        .D(VALID_i_2_n_0),
-        .Q(VALID_OBUF));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFDD8FDD88)) 
-    \bool_6[0]_i_1 
-       (.I0(\bool_6[4]_i_2_n_0 ),
-        .I1(bool_60),
-        .I2(bool_6[1]),
-        .I3(bool_6[0]),
-        .I4(\bool_6[0]_i_3_n_0 ),
-        .I5(\bool_6[1]_i_2_n_0 ),
-        .O(\bool_6[0]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h0080000000000000)) 
-    \bool_6[0]_i_2 
-       (.I0(\bool_6[0]_i_4_n_0 ),
-        .I1(bool_6[4]),
-        .I2(bool_6[3]),
-        .I3(lot_OBUF[4]),
-        .I4(lot_OBUF[0]),
-        .I5(\bool_6[1]_i_3_n_0 ),
-        .O(bool_60));
-  LUT6 #(
-    .INIT(64'h0000000000002000)) 
-    \bool_6[0]_i_3 
-       (.I0(\bool_6[1]_i_3_n_0 ),
-        .I1(bool_6[2]),
-        .I2(\bool_6[4]_i_6_n_0 ),
-        .I3(VALID_i_3_n_0),
-        .I4(bool_6[4]),
-        .I5(bool_6[3]),
-        .O(\bool_6[0]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
-  LUT3 #(
-    .INIT(8'h80)) 
-    \bool_6[0]_i_4 
-       (.I0(bool_6[1]),
-        .I1(bool_6[0]),
-        .I2(bool_6[2]),
-        .O(\bool_6[0]_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'hBBBBBBBBAAAA0AAA)) 
-    \bool_6[1]_i_1 
-       (.I0(\bool_6[1]_i_2_n_0 ),
-        .I1(\bool_6[4]_i_2_n_0 ),
-        .I2(\bool_6[1]_i_3_n_0 ),
-        .I3(\bool_6[1]_i_4_n_0 ),
-        .I4(bool_6[0]),
-        .I5(bool_6[1]),
-        .O(\bool_6[1]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h20000000)) 
-    \bool_6[1]_i_2 
-       (.I0(bool_6[0]),
-        .I1(bool_6[4]),
-        .I2(VALID_i_3_n_0),
-        .I3(\bool_6[4]_i_6_n_0 ),
-        .I4(\bool_6[1]_i_5_n_0 ),
-        .O(\bool_6[1]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'h40)) 
-    \bool_6[1]_i_3 
-       (.I0(lot_OBUF[1]),
-        .I1(lot_OBUF[2]),
-        .I2(lot_OBUF[3]),
-        .O(\bool_6[1]_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'h00001000)) 
-    \bool_6[1]_i_4 
-       (.I0(bool_6[3]),
-        .I1(bool_6[4]),
-        .I2(VALID_i_3_n_0),
-        .I3(\bool_6[4]_i_6_n_0 ),
-        .I4(bool_6[2]),
-        .O(\bool_6[1]_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'h0040000000400810)) 
-    \bool_6[1]_i_5 
-       (.I0(lot_OBUF[3]),
-        .I1(bool_6[1]),
-        .I2(lot_OBUF[1]),
-        .I3(lot_OBUF[2]),
-        .I4(bool_6[2]),
-        .I5(bool_6[3]),
-        .O(\bool_6[1]_i_5_n_0 ));
-  LUT6 #(
-    .INIT(64'h000000000000FCFE)) 
-    \bool_6[2]_i_1 
-       (.I0(bool_6[2]),
-        .I1(\bool_6[2]_i_2_n_0 ),
-        .I2(\bool_6[2]_i_3_n_0 ),
-        .I3(\bool_6[4]_i_2_n_0 ),
-        .I4(\bool_6[2]_i_4_n_0 ),
-        .I5(\bool_6[2]_i_5_n_0 ),
-        .O(\bool_6[2]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000000000800)) 
-    \bool_6[2]_i_2 
-       (.I0(\bool_6[4]_i_4_n_0 ),
-        .I1(\bool_6[4]_i_6_n_0 ),
-        .I2(cnt_5[2]),
-        .I3(lot_OBUF[0]),
-        .I4(lot_OBUF[4]),
-        .I5(bool_6[4]),
-        .O(\bool_6[2]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h0040000000000000)) 
-    \bool_6[2]_i_3 
-       (.I0(bool_6[3]),
-        .I1(\bool_6[2]_i_6_n_0 ),
-        .I2(\bool_6[4]_i_6_n_0 ),
-        .I3(bool_6[2]),
-        .I4(\bool_6[1]_i_3_n_0 ),
-        .I5(\bool_6[2]_i_7_n_0 ),
-        .O(\bool_6[2]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000200000000000)) 
-    \bool_6[2]_i_4 
-       (.I0(\bool_6[2]_i_8_n_0 ),
-        .I1(bool_6[3]),
-        .I2(\bool_6[2]_i_6_n_0 ),
-        .I3(\bool_6[4]_i_6_n_0 ),
-        .I4(bool_6[2]),
-        .I5(\bool_6[1]_i_3_n_0 ),
-        .O(\bool_6[2]_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000000002000)) 
-    \bool_6[2]_i_5 
-       (.I0(\bool_6[2]_i_9_n_0 ),
-        .I1(bool_6[2]),
-        .I2(\bool_6[4]_i_6_n_0 ),
-        .I3(VALID_i_3_n_0),
-        .I4(bool_6[4]),
-        .I5(bool_6[3]),
-        .O(\bool_6[2]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT4 #(
-    .INIT(16'h0004)) 
-    \bool_6[2]_i_6 
-       (.I0(cnt_5[2]),
-        .I1(lot_OBUF[0]),
-        .I2(lot_OBUF[4]),
-        .I3(bool_6[4]),
-        .O(\bool_6[2]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
-  LUT2 #(
-    .INIT(4'h8)) 
-    \bool_6[2]_i_7 
-       (.I0(bool_6[0]),
-        .I1(bool_6[1]),
-        .O(\bool_6[2]_i_7_n_0 ));
-  LUT2 #(
-    .INIT(4'h1)) 
-    \bool_6[2]_i_8 
-       (.I0(bool_6[0]),
-        .I1(bool_6[1]),
-        .O(\bool_6[2]_i_8_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT5 #(
-    .INIT(32'h00000400)) 
-    \bool_6[2]_i_9 
-       (.I0(bool_6[1]),
-        .I1(bool_6[0]),
-        .I2(lot_OBUF[3]),
-        .I3(lot_OBUF[1]),
-        .I4(lot_OBUF[2]),
-        .O(\bool_6[2]_i_9_n_0 ));
-  LUT6 #(
-    .INIT(64'hBBAA3300BB0A3300)) 
-    \bool_6[3]_i_1 
-       (.I0(\bool_6[4]_i_4_n_0 ),
-        .I1(\bool_6[4]_i_2_n_0 ),
-        .I2(\bool_6[3]_i_2_n_0 ),
-        .I3(bool_6[3]),
-        .I4(\bool_6[4]_i_5_n_0 ),
-        .I5(bool_6[2]),
-        .O(\bool_6[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT5 #(
-    .INIT(32'h00840200)) 
-    \bool_6[3]_i_2 
-       (.I0(bool_6[0]),
-        .I1(lot_OBUF[3]),
-        .I2(bool_6[1]),
-        .I3(lot_OBUF[1]),
-        .I4(lot_OBUF[2]),
-        .O(\bool_6[3]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h0F02000202020202)) 
-    \bool_6[4]_i_1 
-       (.I0(bool_6[4]),
-        .I1(\bool_6[4]_i_2_n_0 ),
-        .I2(\bool_6[4]_i_3_n_0 ),
-        .I3(\bool_6[4]_i_4_n_0 ),
-        .I4(bool_6[3]),
-        .I5(\bool_6[4]_i_5_n_0 ),
-        .O(\bool_6[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
-  LUT4 #(
-    .INIT(16'h0001)) 
-    \bool_6[4]_i_2 
-       (.I0(RESET_IBUF),
-        .I1(cnt_5[0]),
-        .I2(cnt_5[1]),
-        .I3(cnt_5[2]),
-        .O(\bool_6[4]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000004000000000)) 
-    \bool_6[4]_i_3 
-       (.I0(bool_6[2]),
-        .I1(\bool_6[4]_i_6_n_0 ),
-        .I2(VALID_i_3_n_0),
-        .I3(bool_6[4]),
-        .I4(bool_6[3]),
-        .I5(\bool_6[3]_i_2_n_0 ),
-        .O(\bool_6[4]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h0400000000000000)) 
-    \bool_6[4]_i_4 
-       (.I0(lot_OBUF[3]),
-        .I1(lot_OBUF[1]),
-        .I2(lot_OBUF[2]),
-        .I3(bool_6[2]),
-        .I4(bool_6[0]),
-        .I5(bool_6[1]),
-        .O(\bool_6[4]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT5 #(
-    .INIT(32'h00100000)) 
-    \bool_6[4]_i_5 
-       (.I0(bool_6[4]),
-        .I1(lot_OBUF[4]),
-        .I2(lot_OBUF[0]),
-        .I3(cnt_5[2]),
-        .I4(\bool_6[4]_i_6_n_0 ),
-        .O(\bool_6[4]_i_5_n_0 ));
-  LUT3 #(
-    .INIT(8'h01)) 
-    \bool_6[4]_i_6 
-       (.I0(cnt_5[1]),
-        .I1(cnt_5[0]),
-        .I2(RESET_IBUF),
-        .O(\bool_6[4]_i_6_n_0 ));
-  FDRE #(
+  OBUF \bol_OBUF[0]_inst 
+       (.I(bol_OBUF[0]),
+        .O(bol[0]));
+  OBUF \bol_OBUF[1]_inst 
+       (.I(bol_OBUF[1]),
+        .O(bol[1]));
+  OBUF \bol_OBUF[2]_inst 
+       (.I(bol_OBUF[2]),
+        .O(bol[2]));
+  OBUF \bol_OBUF[3]_inst 
+       (.I(bol_OBUF[3]),
+        .O(bol[3]));
+  OBUF \bol_OBUF[4]_inst 
+       (.I(bol_OBUF[4]),
+        .O(bol[4]));
+  OBUF \bol_OBUF[5]_inst 
+       (.I(1'b0),
+        .O(bol[5]));
+  (* XILINX_LEGACY_PRIM = "LD" *) 
+  LDCE #(
     .INIT(1'b0)) 
     \bool_6_reg[0] 
-       (.C(clk_IBUF_BUFG),
-        .CE(1'b1),
-        .D(\bool_6[0]_i_1_n_0 ),
-        .Q(bool_6[0]),
-        .R(1'b0));
-  FDRE #(
+       (.CLR(1'b0),
+        .D(bool_6[0]),
+        .G(\bool_6_reg[4]_i_2_n_0 ),
+        .GE(1'b1),
+        .Q(bol_OBUF[0]));
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  LUT5 #(
+    .INIT(32'h00000480)) 
+    \bool_6_reg[0]_i_1 
+       (.I0(lot_OBUF[2]),
+        .I1(lot_OBUF[0]),
+        .I2(lot_OBUF[3]),
+        .I3(lot_OBUF[1]),
+        .I4(lot_OBUF[4]),
+        .O(bool_6[0]));
+  (* XILINX_LEGACY_PRIM = "LD" *) 
+  LDCE #(
     .INIT(1'b0)) 
     \bool_6_reg[1] 
-       (.C(clk_IBUF_BUFG),
-        .CE(1'b1),
-        .D(\bool_6[1]_i_1_n_0 ),
-        .Q(bool_6[1]),
-        .R(1'b0));
-  FDRE #(
+       (.CLR(1'b0),
+        .D(bool_6[1]),
+        .G(\bool_6_reg[4]_i_2_n_0 ),
+        .GE(1'b1),
+        .Q(bol_OBUF[1]));
+  LUT6 #(
+    .INIT(64'h0200000000300000)) 
+    \bool_6_reg[1]_i_1 
+       (.I0(\bool_6_reg[1]_i_2_n_0 ),
+        .I1(lot_OBUF[4]),
+        .I2(lot_OBUF[1]),
+        .I3(lot_OBUF[3]),
+        .I4(lot_OBUF[0]),
+        .I5(lot_OBUF[2]),
+        .O(bool_6[1]));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT5 #(
+    .INIT(32'h00000040)) 
+    \bool_6_reg[1]_i_2 
+       (.I0(bol_OBUF[2]),
+        .I1(bol_OBUF[1]),
+        .I2(bol_OBUF[0]),
+        .I3(bol_OBUF[3]),
+        .I4(bol_OBUF[4]),
+        .O(\bool_6_reg[1]_i_2_n_0 ));
+  (* XILINX_LEGACY_PRIM = "LD" *) 
+  LDCE #(
     .INIT(1'b0)) 
     \bool_6_reg[2] 
-       (.C(clk_IBUF_BUFG),
-        .CE(1'b1),
-        .D(\bool_6[2]_i_1_n_0 ),
-        .Q(bool_6[2]),
-        .R(1'b0));
-  FDRE #(
+       (.CLR(1'b0),
+        .D(bool_6[2]),
+        .G(\bool_6_reg[4]_i_2_n_0 ),
+        .GE(1'b1),
+        .Q(bol_OBUF[2]));
+  LUT6 #(
+    .INIT(64'h44444444E4440444)) 
+    \bool_6_reg[2]_i_1 
+       (.I0(eqOp0_in),
+        .I1(valval_reg_i_4_n_0),
+        .I2(\bool_6_reg[4]_i_3_n_0 ),
+        .I3(bol_OBUF[0]),
+        .I4(bol_OBUF[1]),
+        .I5(bol_OBUF[2]),
+        .O(bool_6[2]));
+  (* XILINX_LEGACY_PRIM = "LD" *) 
+  LDCE #(
     .INIT(1'b0)) 
     \bool_6_reg[3] 
-       (.C(clk_IBUF_BUFG),
-        .CE(1'b1),
-        .D(\bool_6[3]_i_1_n_0 ),
-        .Q(bool_6[3]),
-        .R(1'b0));
-  FDRE #(
+       (.CLR(1'b0),
+        .D(bool_6[3]),
+        .G(\bool_6_reg[4]_i_2_n_0 ),
+        .GE(1'b1),
+        .Q(bol_OBUF[3]));
+  LUT6 #(
+    .INIT(64'h0000000000000400)) 
+    \bool_6_reg[3]_i_1 
+       (.I0(lot_OBUF[4]),
+        .I1(lot_OBUF[1]),
+        .I2(lot_OBUF[3]),
+        .I3(lot_OBUF[0]),
+        .I4(lot_OBUF[2]),
+        .I5(valval_reg_i_5_n_0),
+        .O(bool_6[3]));
+  (* XILINX_LEGACY_PRIM = "LD" *) 
+  LDCE #(
     .INIT(1'b0)) 
     \bool_6_reg[4] 
-       (.C(clk_IBUF_BUFG),
-        .CE(1'b1),
-        .D(\bool_6[4]_i_1_n_0 ),
-        .Q(bool_6[4]),
-        .R(1'b0));
+       (.CLR(1'b0),
+        .D(bool_6[4]),
+        .G(\bool_6_reg[4]_i_2_n_0 ),
+        .GE(1'b1),
+        .Q(bol_OBUF[4]));
+  LUT6 #(
+    .INIT(64'h0444444444440444)) 
+    \bool_6_reg[4]_i_1 
+       (.I0(eqOp0_in),
+        .I1(valval_reg_i_4_n_0),
+        .I2(\bool_6_reg[4]_i_3_n_0 ),
+        .I3(bol_OBUF[0]),
+        .I4(bol_OBUF[1]),
+        .I5(bol_OBUF[2]),
+        .O(bool_6[4]));
+  LUT5 #(
+    .INIT(32'hFD0D0000)) 
+    \bool_6_reg[4]_i_2 
+       (.I0(valval_reg_i_4_n_0),
+        .I1(\bool_6_reg[4]_i_4_n_0 ),
+        .I2(eqOp0_in),
+        .I3(\bool_6_reg[4]_i_5_n_0 ),
+        .I4(eqOp2_in),
+        .O(\bool_6_reg[4]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  LUT2 #(
+    .INIT(4'h1)) 
+    \bool_6_reg[4]_i_3 
+       (.I0(bol_OBUF[3]),
+        .I1(bol_OBUF[4]),
+        .O(\bool_6_reg[4]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT5 #(
+    .INIT(32'h50000100)) 
+    \bool_6_reg[4]_i_4 
+       (.I0(bol_OBUF[4]),
+        .I1(bol_OBUF[3]),
+        .I2(bol_OBUF[2]),
+        .I3(bol_OBUF[0]),
+        .I4(bol_OBUF[1]),
+        .O(\bool_6_reg[4]_i_4_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT5 #(
+    .INIT(32'h81000001)) 
+    \bool_6_reg[4]_i_5 
+       (.I0(bol_OBUF[4]),
+        .I1(bol_OBUF[3]),
+        .I2(bol_OBUF[2]),
+        .I3(bol_OBUF[0]),
+        .I4(bol_OBUF[1]),
+        .O(\bool_6_reg[4]_i_5_n_0 ));
   BUFG clk_IBUF_BUFG_inst
        (.I(clk_IBUF),
         .O(clk_IBUF_BUFG));
   IBUF clk_IBUF_inst
        (.I(clk),
         .O(clk_IBUF));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT4 #(
-    .INIT(16'hF00D)) 
+    .INIT(16'h9989)) 
     \cnt_5[0]_i_1 
-       (.I0(cnt_5[2]),
-        .I1(cnt_5[1]),
-        .I2(cnt_5[0]),
-        .I3(RESET_IBUF),
+       (.I0(RESET_IBUF),
+        .I1(cntt_OBUF[0]),
+        .I2(cntt_OBUF[2]),
+        .I3(cntt_OBUF[1]),
         .O(\cnt_5[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT3 #(
-    .INIT(8'hB4)) 
+    .INIT(8'h9C)) 
     \cnt_5[1]_i_1 
        (.I0(RESET_IBUF),
-        .I1(cnt_5[0]),
-        .I2(cnt_5[1]),
+        .I1(cntt_OBUF[1]),
+        .I2(cntt_OBUF[0]),
         .O(\cnt_5[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT4 #(
-    .INIT(16'h9AA8)) 
+    .INIT(16'hBE40)) 
     \cnt_5[2]_i_1 
-       (.I0(cnt_5[2]),
-        .I1(RESET_IBUF),
-        .I2(cnt_5[0]),
-        .I3(cnt_5[1]),
+       (.I0(RESET_IBUF),
+        .I1(cntt_OBUF[1]),
+        .I2(cntt_OBUF[0]),
+        .I3(cntt_OBUF[2]),
         .O(\cnt_5[2]_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -450,7 +272,7 @@ end
        (.C(clk_IBUF_BUFG),
         .CE(1'b1),
         .D(\cnt_5[0]_i_1_n_0 ),
-        .Q(cnt_5[0]),
+        .Q(cntt_OBUF[0]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -458,7 +280,7 @@ end
        (.C(clk_IBUF_BUFG),
         .CE(1'b1),
         .D(\cnt_5[1]_i_1_n_0 ),
-        .Q(cnt_5[1]),
+        .Q(cntt_OBUF[1]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -466,8 +288,17 @@ end
        (.C(clk_IBUF_BUFG),
         .CE(1'b1),
         .D(\cnt_5[2]_i_1_n_0 ),
-        .Q(cnt_5[2]),
+        .Q(cntt_OBUF[2]),
         .R(1'b0));
+  OBUF \cntt_OBUF[0]_inst 
+       (.I(cntt_OBUF[0]),
+        .O(cntt[0]));
+  OBUF \cntt_OBUF[1]_inst 
+       (.I(cntt_OBUF[1]),
+        .O(cntt[1]));
+  OBUF \cntt_OBUF[2]_inst 
+       (.I(cntt_OBUF[2]),
+        .O(cntt[2]));
   LUT1 #(
     .INIT(2'h1)) 
     \letter[4]_i_1 
@@ -528,6 +359,81 @@ end
   OBUF \lot_OBUF[4]_inst 
        (.I(lot_OBUF[4]),
         .O(lot[4]));
+  (* XILINX_LEGACY_PRIM = "LD" *) 
+  LDCE #(
+    .INIT(1'b0)) 
+    valval_reg
+       (.CLR(1'b0),
+        .D(valval),
+        .G(valval3_out),
+        .GE(1'b1),
+        .Q(VALID_OBUF));
+  LUT6 #(
+    .INIT(64'h8000000000000000)) 
+    valval_reg_i_1
+       (.I0(bol_OBUF[1]),
+        .I1(bol_OBUF[0]),
+        .I2(bol_OBUF[2]),
+        .I3(bol_OBUF[3]),
+        .I4(bol_OBUF[4]),
+        .I5(eqOp0_in),
+        .O(valval));
+  LUT5 #(
+    .INIT(32'hFD0D0000)) 
+    valval_reg_i_2
+       (.I0(valval_reg_i_4_n_0),
+        .I1(valval_reg_i_5_n_0),
+        .I2(eqOp0_in),
+        .I3(valval6_out),
+        .I4(eqOp2_in),
+        .O(valval3_out));
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  LUT5 #(
+    .INIT(32'h10000000)) 
+    valval_reg_i_3
+       (.I0(lot_OBUF[4]),
+        .I1(lot_OBUF[1]),
+        .I2(lot_OBUF[3]),
+        .I3(lot_OBUF[0]),
+        .I4(lot_OBUF[2]),
+        .O(eqOp0_in));
+  LUT5 #(
+    .INIT(32'h01000000)) 
+    valval_reg_i_4
+       (.I0(lot_OBUF[3]),
+        .I1(lot_OBUF[4]),
+        .I2(lot_OBUF[2]),
+        .I3(lot_OBUF[0]),
+        .I4(lot_OBUF[1]),
+        .O(valval_reg_i_4_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  LUT5 #(
+    .INIT(32'h00000010)) 
+    valval_reg_i_5
+       (.I0(bol_OBUF[4]),
+        .I1(bol_OBUF[3]),
+        .I2(bol_OBUF[0]),
+        .I3(bol_OBUF[1]),
+        .I4(bol_OBUF[2]),
+        .O(valval_reg_i_5_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT5 #(
+    .INIT(32'h80000000)) 
+    valval_reg_i_6
+       (.I0(bol_OBUF[1]),
+        .I1(bol_OBUF[0]),
+        .I2(bol_OBUF[2]),
+        .I3(bol_OBUF[3]),
+        .I4(bol_OBUF[4]),
+        .O(valval6_out));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  LUT3 #(
+    .INIT(8'h01)) 
+    valval_reg_i_7
+       (.I0(cntt_OBUF[2]),
+        .I1(cntt_OBUF[0]),
+        .I2(cntt_OBUF[1]),
+        .O(eqOp2_in));
 endmodule
 `ifndef GLBL
 `define GLBL

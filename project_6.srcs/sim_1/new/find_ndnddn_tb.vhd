@@ -41,6 +41,8 @@ signal DATA: std_logic;
 signal VALID: std_logic;
 signal clk: std_logic;
 signal lot: std_logic_vector (4 downto 0);
+signal bol: std_logic_vector (5 downto 0);
+signal cntt: std_logic_vector (2 downto 0);
 
 component find_ndnddn
 port(
@@ -48,24 +50,33 @@ RESET: in std_logic;
 DATA: in std_logic;
 VALID: out std_logic;
 clk: in std_logic;
-lot: out std_logic_vector ( 4 downto 0));
+lot: out std_logic_vector ( 4 downto 0);
+bol: out std_logic_vector (5 downto 0);
+cntt: out std_logic_vector (2 downto 0));
 end component;
 
 begin
 
-DUT: find_ndnddn port map (RESET, DATA, VALID, clk, lot);
+DUT: find_ndnddn port map (RESET, DATA, VALID, clk, lot, bol, cntt);
 
 clock: process
 begin
-clk <= '1';
-wait for 50ns;
+
 clk <= '0';
+wait for 50ns;
+clk <= '1';
 wait for 50ns;
 end process;
 
 test: process
 begin
 RESET <= '0';
+DATA <= '0'; wait for 100ns;
+DATA <= '0'; wait for 100ns;
+DATA <= '0'; wait for 100ns;
+DATA <= '0'; wait for 100ns;
+DATA <= '0'; wait for 100ns;
+
 DATA <= '0'; wait for 100ns;
 DATA <= '0'; wait for 100ns;
 DATA <= '1'; wait for 100ns;
